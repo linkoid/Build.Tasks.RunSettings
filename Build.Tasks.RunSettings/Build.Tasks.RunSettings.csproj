@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Linkoid.Build.Tasks.RunSettings</AssemblyName>
     <RootNamespace>Linkoid.Build.Tasks.RunSettings</RootNamespace>
     <LangVersion>12</LangVersion>

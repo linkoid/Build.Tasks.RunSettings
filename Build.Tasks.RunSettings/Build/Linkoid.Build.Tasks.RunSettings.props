@@ -1,0 +1,17 @@
+﻿<Project>
+  
+  <PropertyGroup>
+    <GenerateRunSettings Condition="'$(GenerateRunSettings)' == ''">true</GenerateRunSettings>
+    <_RunSettingsTasksDll>$(MSBuildThisFileDirectory)Linkoid.Build.Tasks.RunSettings.dll</_RunSettingsTasksDll>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PropertyPageSchema Include="$(MSBuildThisFileDirectory)BuildPropertyPage.RunSettings.xaml">
+      <Context>Project</Context>
+    </PropertyPageSchema>
+  </ItemGroup>
+
+  <UsingTask AssemblyFile="$(_RunSettingsTasksDll)"
+    TaskName="Linkoid.Build.Tasks.RunSettings.GenerateRunSettings" />
+  
+</Project>

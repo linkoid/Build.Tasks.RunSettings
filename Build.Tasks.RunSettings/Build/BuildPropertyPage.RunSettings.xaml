@@ -1,0 +1,25 @@
+﻿ ﻿<?xml version="1.0" encoding="utf-8" ?>
+<Rule Name="Build"
+      OverrideMode="Extend"
+      xmlns="http://schemas.microsoft.com/build/2009/properties">
+
+	<StringProperty Name="RunSettingsFilePath"
+                    DisplayName="Run settings file path"
+                    Description="Specifies the path to the .runsettings file to use when running tests."
+                    Category="General"
+                    Subtype="file">
+		<StringProperty.DataSource>
+			<DataSource HasConfigurationCondition="True" />
+		</StringProperty.DataSource>
+	</StringProperty>
+
+	<BoolProperty Name="GenerateRunSettings"
+                DisplayName="Generate run settings"
+                Description="Generate a .runsettings file on build."
+                Category="General">
+		<StringProperty.DataSource>
+			<DataSource HasConfigurationCondition="True" />
+		</StringProperty.DataSource>
+	</BoolProperty>
+
+</Rule>

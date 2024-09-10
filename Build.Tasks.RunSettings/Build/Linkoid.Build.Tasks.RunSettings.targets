@@ -1,0 +1,36 @@
+﻿<Project>
+
+  <Target Name="_GetRunSettingsFile"
+          Returns="@(_RunSettingsFile)">
+    <ItemGroup>
+      <_RunSettingsFile Include="$(RunSettingsFilePath)" Condition="'$(RunSettingsFilePath)' != ''"/>
+      <_RunSettingsFile Include=".runsettings" Condition="'$(RunSettingsFilePath)' == ''"/>
+    </ItemGroup>
+    <ItemGroup>
+      <_RunSettingsFileCache Include="@(_RunSettingsFile->'$(IntermediatePath)%(Filename)%(Extension)')" Condition="'@(_RunSettingsFile)' != ''"/>
+    </ItemGroup>
+  </Target>
+
+  <PropertyGroup>
+    <BuildDependsOn>$(BuildDependsOn);GenerateRunSettings</BuildDependsOn>
+  </PropertyGroup>
+
+  <Target Name="GenerateRunSettings"
+          Inputs="$(MSBuildAllProjects);@(_RunSettingsFile);@(_RunSettingsFileCache)"
+          Outputs="@(_RunSettingsFile);@(_RunSettingsFileCache)"
+          DependsOnTargets="_GetRunSettingsFile"
+          Condition="'$(GenerateRunSettings)' == 'true'">
+    
+    <GenerateRunSettings
+      RunSettingsFile="@(_RunSettingsFile)"
+      Elements="@(RunSettingElements)"
+      Attributes="@(RunSettingAttributes)"
+      Condition="'@(RunSettingAttributes)' != ''" />
+    
+    <Copy SourceFiles="@(_RunSettingsFile)"
+          DestinationFiles="@(_RunSettingsFileCache)"
+          Condition="Exists(@(_RunSettingsFile))" />
+    
+  </Target>
+
+</Project>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--This file was automatically generated. Additions are fine, but some changes may be overwritten on build.-->
+<RunSettings>
+  <RunConfiguration>
+    <ResultsDirectory>.\TestResults</ResultsDirectory>
+    <TargetFrameworkVersion>net6.0</TargetFrameworkVersion>
+  </RunConfiguration>
+  <LoggerRunSettings>
+    <Loggers>
+      <Logger enabled="true" friendlyName="console" />
+    </Loggers>
+  </LoggerRunSettings>
+</RunSettings>

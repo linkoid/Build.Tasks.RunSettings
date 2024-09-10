@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>Linkoid.Build.Tasks.RunSettings.Tests</AssemblyName>
+    <RootNamespace>Linkoid.Build.Tasks.RunSettings.Tests</RootNamespace>
+    <LangVersion>12</LangVersion>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="MSTest" Version="3.5.2" />
+    <PackageReference Include="Linkoid.Build.Tasks.RunSettings" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <RunSettingElements Include="RunConfiguration">
+      <ResultsDirectory>.\TestResults</ResultsDirectory>
+      <TargetFrameworkVersion>$(TargetFramework)</TargetFrameworkVersion>
+    </RunSettingElements>
+    <RunSettingAttributes Include="LoggerRunSettings/Loggers/Logger">
+      <friendlyName>console</friendlyName>
+      <enabled Condition="'$(Configuration)' == 'Debug'">true</enabled>
+      <enabled Condition="'$(Configuration)' == 'Release'">false</enabled>
+    </RunSettingAttributes>
+  </ItemGroup>
+
+</Project>
